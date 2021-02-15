@@ -17,4 +17,19 @@
     <string name="about">about</string>
     <string name="body">body</string>
     <string name="Borrar">borrar</string>
+    <string name="bd">bd</string>
+    <string name="rv">rv</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+
+    <string name="preferencias_PMDM_correo_file">PreferenciasPMDMCorreo</string>
+    <string name="preferencias_email">email</string>
+    <string name="preferencias_islogin">islogin</string>
 </resources>

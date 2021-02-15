@@ -22,4 +22,8 @@
         android:name="com.example.correodrawer.ui.slideshow.SlideshowFragment"
         android:label="@string/borrador"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/detalleborradorFragment"
+        android:name="com.example.correodrawer.ui.borrador.detalleborradorFragment"
+        android:label="detalleborradorFragment" />
 </navigation>
