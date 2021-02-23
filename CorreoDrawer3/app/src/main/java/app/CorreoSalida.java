@@ -5,10 +5,9 @@ import com.example.correodrawer.ui.Correo;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-import static app.Myapp.CorreoID;
+import static app.Myapp.SalidaID;
 
-public class CorreoDB extends RealmObject {
-
+public class CorreoSalida extends RealmObject {
     @PrimaryKey
     private long id;
     private String From;
@@ -16,12 +15,12 @@ public class CorreoDB extends RealmObject {
     private String asunto;
     private String mensaje;
 
-    public CorreoDB() {
-        this.id= CorreoID.incrementAndGet();
+    public CorreoSalida() {
+        this.id= SalidaID.incrementAndGet();
     }
 
-    public CorreoDB(String From, String asunto, String mensaje, String para) {
-        this.id= CorreoID.incrementAndGet();
+    public CorreoSalida(String From, String asunto, String mensaje, String para) {
+        this.id= SalidaID.incrementAndGet();
         this.From = From;
         this.para = para;
         this.asunto = asunto;

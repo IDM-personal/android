@@ -5,22 +5,21 @@ import com.example.correodrawer.ui.Correo;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
+import static app.Myapp.BorradorID;
 import static app.Myapp.CorreoID;
 
-public class CorreoDB extends RealmObject {
-
+public class BorradorDB extends RealmObject {
     @PrimaryKey
     private long id;
-    private String From;
     private String para;
+    private String From;
     private String asunto;
     private String mensaje;
 
-    public CorreoDB() {
-        this.id= CorreoID.incrementAndGet();
+    public BorradorDB() {
+        this.id= BorradorID.incrementAndGet();
     }
-
-    public CorreoDB(String From, String asunto, String mensaje, String para) {
+    public BorradorDB(String para, String nombre, String asunto, String mensaje) {
         this.id= CorreoID.incrementAndGet();
         this.From = From;
         this.para = para;
@@ -30,7 +29,15 @@ public class CorreoDB extends RealmObject {
 
     public Correo toCorreo()
     {
-        return new Correo((int) this.id,this.para,this.asunto,this.mensaje);
+        return new Correo((int) this.id,this.From,this.asunto,this.mensaje);
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getFrom() {

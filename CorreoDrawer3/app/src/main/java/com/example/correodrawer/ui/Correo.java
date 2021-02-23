@@ -5,16 +5,12 @@ public class Correo {
     private String sender;
     private String asunto;
     private String cuerpo;
-    private Boolean leido;
-    private String borrar;
 
-    public Correo(int codigo, String sender, String asunto, String cuerpo, Boolean leido) {
+    public Correo(int codigo, String sender, String asunto, String cuerpo) {
         this.codigo = codigo;
         this.sender = sender;
         this.asunto = asunto;
         this.cuerpo = cuerpo;
-        this.borrar = "Borrar";
-        this.leido = leido;
     }
 
     public int getCodigo() {
@@ -49,11 +45,4 @@ public class Correo {
         this.cuerpo = cuerpo;
     }
 
-    public Boolean getLeido() {
-        return leido;
-    }
-
-    public void setLeido(Boolean leido) {
-        this.leido = leido;
-    }
 }

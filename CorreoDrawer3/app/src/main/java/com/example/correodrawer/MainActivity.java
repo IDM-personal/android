@@ -1,25 +1,19 @@
 package com.example.correodrawer;
 
-import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.correodrawer.ui.CorreosAdapter;
-import com.example.correodrawer.ui.OnBorrarCorreoListener;
+import com.example.correodrawer.ui.borrador.onremoveBorrador;
+import com.example.correodrawer.ui.gallery.CorreosSalidaAdapter;
+import com.example.correodrawer.ui.gallery.onborrarCorreo;
+import com.example.correodrawer.ui.home.onborrarCorreoEntrada;
+import com.example.correodrawer.ui.slideshow.onborrarCorreoBorrador;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -28,21 +22,24 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import java.io.Serializable;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements OnBorrarCorreoListener {
+import io.realm.Realm;
+
+public class MainActivity extends AppCompatActivity implements onborrarCorreo, onborrarCorreoEntrada, onborrarCorreoBorrador, onremoveBorrador {
 
     private AppBarConfiguration mAppBarConfiguration;
-    private OnBorrarCorreoListener mListener;
-    private List<CorreosAdapter> averiaList;
+    private List<CorreosSalidaAdapter> averiaList;
     private ListView lista;
     private int pos;
     private FloatingActionButton fab;
+    Realm realm;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.i("miCaller","info");
         super.onCreate(savedInstanceState);
+        realm = Realm.getDefaultInstance();
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -52,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements OnBorrarCorreoLis
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.detalleborradorFragment)
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
                 .setDrawerLayout(drawer)
                 .build();
         fab.show();
@@ -60,17 +57,21 @@ public class MainActivity extends AppCompatActivity implements OnBorrarCorreoLis
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fab.setVisibility(View.INVISIBLE);
-                Bundle b = new Bundle();
-                b.putString("miCaller", MainActivity.class.getSimpleName());
-                Log.i("Logical", navController.getCurrentDestination().toString());
-                navController.navigate(R.id.detalleborradorFragment,b);
+                fab.hide();
+                monew n = new monew(view);
+                n.show(getSupportFragmentManager(),"");
+                n.dismiss();
             }
         });
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }
 
+    @Override
+    protected void onResume() {
+        Log.i("miCaller","info");
+        super.onResume();
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         Log.i("miCaller","info");
@@ -88,8 +89,28 @@ public class MainActivity extends AppCompatActivity implements OnBorrarCorreoLis
                 || super.onSupportNavigateUp();
     }
 
+
     @Override
-    public void BorrarCorreoListener(int position) {
-        Log.i("Logical", "Listener");
+    public void borra() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController.navigate(R.id.nav_gallery);
+    }
+
+    @Override
+    public void borraEntrada() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController.navigate(R.id.nav_home);
+    }
+
+    @Override
+    public void borraBorrador() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController.navigate(R.id.nav_slideshow);
+    }
+
+    @Override
+    public void actionPerformed() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController.navigate(R.id.nav_gallery);
     }
 }

@@ -2,52 +2,109 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/about"
+    android:id="@+id/correo_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/From"
-        android:layout_width="150dp"
-        android:layout_height="16dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginLeft="72dp"
-        android:layout_marginBottom="8dp"
-        android:text="De:"
-        app:layout_constraintBottom_toTopOf="@+id/for_"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/for_"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="40dp"
-        android:text="Para:"
-        app:layout_constraintStart_toStartOf="parent"
+    <EditText
+        android:id="@+id/aboutNew"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="65dp"
+        android:layout_marginRight="65dp"
+        android:layout_marginBottom="9dp"
+        android:ems="10"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/forText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/asuntotext"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/asuntotext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="32dp"
-        android:text="Asunto : "
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginRight="7dp"
+        android:text="Asunto:"
+        app:layout_constraintEnd_toStartOf="@+id/aboutNew"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/for_" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/enviar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="76dp"
+        android:layout_marginRight="76dp"
+        android:text="Enviar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bodydetailNew" />
 
     <TextView
-        android:id="@+id/textView5"
-        android:layout_width="287dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
+        android:id="@+id/bodyNew"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="4dp"
+        android:text="Cuerpo:"
+        app:layout_constraintEnd_toStartOf="@+id/bodydetailNew"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/paranew" />
+
+    <EditText
+        android:id="@+id/bodydetailNew"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="57dp"
+        android:layout_marginRight="57dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/bodyNew"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bodyNew"
+        app:layout_constraintTop_toBottomOf="@+id/bodyNew"
+        app:layout_constraintVertical_bias="0.175" />
+
+    <EditText
+        android:id="@+id/paranew"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="65dp"
+        android:layout_marginRight="65dp"
+        android:ems="10"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/forText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/forText"
+        app:layout_constraintTop_toBottomOf="@+id/forText"
+        app:layout_constraintVertical_bias="0.7" />
+
+    <TextView
+        android:id="@+id/forText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Para:"
+        app:layout_constraintEnd_toStartOf="@+id/paranew"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/savedetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="44dp"
+        android:text="Guardar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bodydetailNew" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

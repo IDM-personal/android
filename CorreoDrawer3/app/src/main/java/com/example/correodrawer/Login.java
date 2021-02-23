@@ -21,11 +21,19 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         Button b1 = findViewById(R.id.login);
+        EditText editTextLogin = (EditText) findViewById(R.id.username);
+        EditText editTextPassword =(EditText) findViewById(R.id.password);
+        SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preferencias_PMDM_correo_file), Context.MODE_PRIVATE);
+        boolean isLogin=sharedPref.getBoolean(getString(R.string.preferencias_islogin),false);
+        if (isLogin) {
+            Intent i = new Intent(Login.this, MainActivity.class);
+            startActivity(i);
+        }
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EditText editTextLogin = (EditText) findViewById(R.id.username);
-                EditText editTextPassword =(EditText)findViewById(R.id.password);
+                EditText editTextPassword =(EditText) findViewById(R.id.password);
                 SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preferencias_PMDM_correo_file), Context.MODE_PRIVATE);
                 boolean isLogin=sharedPref.getBoolean(getString(R.string.preferencias_islogin),false);
                 Log.i("Logical", String.valueOf(isLogin));

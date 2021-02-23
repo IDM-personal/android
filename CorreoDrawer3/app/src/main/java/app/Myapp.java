@@ -11,20 +11,26 @@ import io.realm.RealmResults;
 
 public class Myapp extends Application {
     public static AtomicLong CorreoID= new AtomicLong();
+    public static AtomicLong BorradorID= new AtomicLong();
+    public static AtomicLong SalidaID= new AtomicLong();
     @Override
     public void onCreate() {
         super.onCreate();
         //Realm.init(this);
         initRealm();
         Realm realm=Realm.getDefaultInstance();
-        CorreoID=getIdByTable(realm, CorreoDB.class);
+        CorreoID = getIdByTable(realm, CorreoDB.class);
+        BorradorID = getIdByTable(realm, BorradorDB.class);
+        SalidaID = getIdByTable(realm, CorreoSalida.class);
         realm.close();
     }
 
     private void initRealm() {
+
         Realm.init(getApplicationContext());
         RealmConfiguration realmConfiguration= new RealmConfiguration.Builder()
                 .deleteRealmIfMigrationNeeded()
+                .allowWritesOnUiThread(true)
                 .schemaVersion(1)
                 .build();
         Realm.setDefaultConfiguration(realmConfiguration);
